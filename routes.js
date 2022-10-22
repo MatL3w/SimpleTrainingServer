@@ -36,7 +36,10 @@ res.write('</html>');
 res.end();
 }
 
-module.exports = {
-    handler: requestHandler,
-    text: 'same text',
-};
+// module.exports = {
+//     handler: requestHandler,
+//     text: 'same text',
+// };
+
+module.exports.handler=requestHandler;
+module.exports.someText='some text';
