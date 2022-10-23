@@ -3,9 +3,16 @@ const fs = require('fs');
 function requestHandler(req,res){
     const url = req.url;
     const method = req.method;
-if(url==='/'){
+    if(url==='/'){
+        res.write('<html>');
+        res.write('<head><tittle>Greetings</tittle></head>');
+        res.write('</head>');
+        res.write('</html>');
+        return res.end();
+    }
+if(url==='/create-users'){
     res.write('<html>');
-    res.write('<head><tittle>Enter message</tittle></head>');
+    res.write('<head><tittle>Add New User</tittle></head>');
     res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
     res.write('</head>');
     res.write('</html>');
@@ -20,20 +27,25 @@ if(url=== '/message' && method ==='POST'){
    return req.on('end',()=>{
         const parsedBody = Buffer.concat(body).toString();
         const message =parsedBody.split('=')[1];
-        fs.writeFile('message.txt',message,(err)=>{
+        fs.appendFile('./message.txt',message+"\n",(err)=>{
         });
         res.statusCode = 302;
         res.setHeader('Location','/');
         return res.end();
     });
-
 }
-res.setHeader('Contet-Type','text/html');
-res.write('<html>');
-res.write('<head><tittle>My firts page</tittle></head>');
-res.write('</head>');
-res.write('</html>');
-res.end();
+if(url==='/users'){
+    const data = fs.readFileSync('./message.txt');
+    const str = data.toString().split('\n');
+    res.write('<html>');
+    res.write('<head><tittle>Greetings</tittle></head>');
+    for(let i=0;i<str.length;i++){
+        res.write(`<ul><li>${str[i]}</li></ul>`);
+    }
+    res.write('</head>');
+    res.write('</html>');
+    return res.end();
+}
 }
 
 // module.exports = {
