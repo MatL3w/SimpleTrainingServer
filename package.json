@@ -1,0 +1,19 @@
+{
+  "name": "simpletrainingserver",
+  "version": "1.0.0",
+  "description": "SimpleTrainingServer",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatL3w/SimpleTrainingServer.git"
+  },
+  "author": "Mateusz L.",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/MatL3w/SimpleTrainingServer/issues"
+  },
+  "homepage": "https://github.com/MatL3w/SimpleTrainingServer#readme"
+}
