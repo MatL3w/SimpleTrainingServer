@@ -26,7 +26,7 @@ if(url=== '/message' && method ==='POST'){
     });
    return req.on('end',()=>{
         const parsedBody = Buffer.concat(body).toString();
-        const message =parsedBody.split('=')[0];
+        const message =parsedBody.split('=')[1];
         fs.appendFile('./message.txt',message+"\n",(err)=>{
         });
         res.statusCode = 302;
